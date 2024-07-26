@@ -11,6 +11,10 @@
 		159EB03A2C530C7000310B19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159EB0392C530C7000310B19 /* ContentView.swift */; };
 		159EB03C2C530C7200310B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159EB03B2C530C7200310B19 /* Assets.xcassets */; };
 		159EB03F2C530C7200310B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159EB03E2C530C7200310B19 /* Preview Assets.xcassets */; };
+		159EB0462C530E7F00310B19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159EB0452C530E7F00310B19 /* Constants.swift */; };
+		159EB0482C53174200310B19 /* APIKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 159EB0472C53174100310B19 /* APIKey.json */; settings = {ASSET_TAGS = (APIKey, ); }; };
+		159EB04A2C532AA300310B19 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159EB0492C532AA300310B19 /* ContentViewModel.swift */; };
+		159EB04C2C532BA000310B19 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159EB04B2C532BA000310B19 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		159EB0392C530C7000310B19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		159EB03B2C530C7200310B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		159EB03E2C530C7200310B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		159EB0452C530E7F00310B19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		159EB0472C53174100310B19 /* APIKey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = APIKey.json; sourceTree = "<group>"; };
+		159EB0492C532AA300310B19 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		159EB04B2C532BA000310B19 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,14 @@
 		159EB0362C530C7000310B19 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				159EB0472C53174100310B19 /* APIKey.json */,
 				159EB0372C530C7000310B19 /* WeatherAppApp.swift */,
 				159EB0392C530C7000310B19 /* ContentView.swift */,
+				159EB0452C530E7F00310B19 /* Constants.swift */,
 				159EB03B2C530C7200310B19 /* Assets.xcassets */,
 				159EB03D2C530C7200310B19 /* Preview Content */,
+				159EB0492C532AA300310B19 /* ContentViewModel.swift */,
+				159EB04B2C532BA000310B19 /* WeatherAPI.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -94,6 +106,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					APIKey,
+				);
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
@@ -126,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159EB03F2C530C7200310B19 /* Preview Assets.xcassets in Resources */,
+				159EB0482C53174200310B19 /* APIKey.json in Resources */,
 				159EB03C2C530C7200310B19 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159EB04A2C532AA300310B19 /* ContentViewModel.swift in Sources */,
 				159EB03A2C530C7000310B19 /* ContentView.swift in Sources */,
+				159EB04C2C532BA000310B19 /* WeatherAPI.swift in Sources */,
 				159EB0382C530C7000310B19 /* WeatherAppApp.swift in Sources */,
+				159EB0462C530E7F00310B19 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +303,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = APIKey;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ferin.chowarun.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -312,6 +332,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = APIKey;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ferin.chowarun.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
