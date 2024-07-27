@@ -7,24 +7,63 @@
 
 import SwiftUI
 
+// TBD - challenge -> add card for multiple cities
+
 struct ContentView: View {
-    @StateObject var viewModel = ContentViewModel() // is a class / object / reference type
+    @State var weatherComponent = [ContentViewModel]()
+    
     var body: some View {
         VStack {
-            TextField("Type your city", text: $viewModel.cityName)
-                .padding(.all)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 1)
-                .onChange(of: viewModel.cityName) { _, _ in
-                    viewModel.refreshWeather()
+            
+            WeatherComponent()
+            
+            ForEach(weatherComponent, id: \.self.uuid) { model in
+                WeatherComponent(viewModel: model).padding(8)
+            }
+            
+            HStack {
+                Button("Add City") {
+                    weatherComponent.append(ContentViewModel())
+                    print(weatherComponent.count)
                 }
-            Text(viewModel.weatherData.name ?? "City not found")
-                .font(.largeTitle)
-            Text(viewModel.weatherData.weather?.first?.main ?? "City not found")
+                .buttonStyle(PrimaryButton())
+                
+                
+                Button("Remove Last City") {
+                    _ = weatherComponent.popLast()
+                    print(weatherComponent.count)
+                }
+                .buttonStyle(WarningButton())
+            }
+            .padding(8)
+            
+            
         }
         .padding()
+        .shadow(color: Color(red: 190/255, green: 190/255, blue: 190/255), radius: 4, x: 2, y: 2)
     }
 }
 
 #Preview {
     ContentView()
+}
+
+struct PrimaryButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .background(Color.black)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+struct WarningButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .background(Color.red)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
 }

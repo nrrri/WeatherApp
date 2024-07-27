@@ -6,24 +6,41 @@
 //
 
 import Foundation
+import SwiftUI
 
-@MainActor // mean what happen in this class is potentially changed in the ui
-class ContentViewModel: ObservableObject { // instead of using delegate, use ObservableObject
+
+class ContentViewModel: ObservableObject {
+    // instead of using delegate, use ObservableObject
     
     @Published var weatherData = WeatherAPIResponse.default // Published will notify ObservableObject if it's changed
-    @Published var cityName: String = "Toronto"
+    @Published var cityName: String = ""
+    var uuid = UUID()
     
     func refreshWeather() {
         guard cityName.count > 3 else { return }
         Task {
-            guard let url = prepareWeatherURL() else { return }
+            guard let url = prepareWeatherURL() else {
+                print("Invalid url")
+                return
+            }
             print("Started a new network call")
             let decoder = JSONDecoder()
-            guard let (data, _) = try? await URLSession.shared.data(from: url) else { return }
-            guard let decodedData = try? decoder.decode(WeatherAPIResponse.self, from: data) else {
-                return }
-//            updateUI(newData: decodedData)
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let decodedData = try decoder.decode(WeatherAPIResponse.self, from: data)
+                await updateUI(newData: decodedData)
+            } catch {
+                print("Network or decoding error: \(error.localizedDescription)")
+            }
+           
+            
         }
+    }
+    
+    @MainActor // mean what happen in this class is potentially changed in the ui
+    private func updateUI (newData: WeatherAPIResponse) {
+        weatherData = newData
+        print(weatherData)
     }
 
     private func prepareWeatherURL() -> URL? {
