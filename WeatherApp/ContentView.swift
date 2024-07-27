@@ -13,8 +13,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            WeatherComponent()
-            
             // Challenge adding cards
             ForEach(weatherComponent, id: \.self.uuid) { model in
                 WeatherComponent(viewModel: model).padding(8)
