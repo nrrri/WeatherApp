@@ -24,10 +24,8 @@ struct WeatherComponent: View {
                 .onChange(of: viewModel.cityName) { _, _ in
                     viewModel.refreshWeather()
                 }
-//            Text(viewModel.weatherData.name ?? "City not found")
             
             // challenge 1 (easy)
-           
             if let conditionWeather = viewModel.weatherData.weather?.first?.icon {
                 let iconURL = URL(string: "https://openweathermap.org/img/wn/\(conditionWeather)@2x.png")
                 if let url = iconURL {

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TBD - challenge -> add card for multiple cities
-
 struct ContentView: View {
     @State var weatherComponent = [ContentViewModel]()
     
@@ -17,6 +15,7 @@ struct ContentView: View {
             
             WeatherComponent()
             
+            // Challenge adding cards
             ForEach(weatherComponent, id: \.self.uuid) { model in
                 WeatherComponent(viewModel: model).padding(8)
             }
